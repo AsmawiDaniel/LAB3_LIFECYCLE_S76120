@@ -1,46 +1,44 @@
 package com.example.lab3_lifecycle_s76120
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 
-open class LoggingActivity : AppCompatActivity(){
-    private val tag get() = "LC " + javaClass.simpleName
+open class LoggingActivity : AppCompatActivity() {
+    private val tag = "LC_${this::class.java.simpleName}"
 
-    override fun onCreate(
-        savedInstanceState: Bundle?,
-    ) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(tag,"On create (saved state = ${savedInstanceState != null}")
+        Log.d(tag, "onCreate (savedState=${savedInstanceState != null})")
     }
 
     override fun onStart() {
         super.onStart()
-        Log.d(tag, "On Start")
+        Log.d(tag, "onStart")
     }
 
     override fun onRestart() {
         super.onRestart()
-        Log.d(tag, "On Restart")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d(tag, "On Pause")
+        Log.d(tag, "onRestart")
     }
 
     override fun onResume() {
         super.onResume()
-        Log.d(tag, "On Resume")
+        Log.d(tag, "onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(tag, "onPause")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.d(tag, "On Stop")
+        Log.d(tag, "onStop")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d(tag, "On Destroy (isFinishing) = $isFinishing, changingConfig = $isChangingConfigurations")
+        Log.d(tag, "onDestroy (isFinishing=$isFinishing, changingConfig=$isChangingConfigurations)")
     }
 }
